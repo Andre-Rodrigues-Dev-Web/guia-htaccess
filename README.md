@@ -20,6 +20,7 @@ Redirecionamento de http para https
 O comando abaixo irá redirecionar todo o acesso do endereço http://meusite.com/ para https://meusite.com
 
 # Redireciona de http para https
+
 ```htacess
 <IfModule mod_rewrite.c>
 RewriteEngine on
@@ -36,48 +37,66 @@ Redirecionamento sem WWW para com WWW
 O comando a seguir irá redirecionar o seu endereço meusite.com para www.meusite.com
 
 # Redireciona domínio sem o www para endereço com o www
+
+```htacess
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^seusite.com [NC]
 RewriteRule ^(.*)$ http://www.meusite.com/$1 [L,R=301]
 </IfModule>
+```
 Redirecionamento com WWW para sem WWW
 O comando abaixo irá redirecionar o seu endereço www.meusite.com para meusite.com
 
 # Redireciona domínio com o www para endereço sem o www
+
+```htacess
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^www.meusite.com [NC]
 RewriteRule ^(.*)$ http://meusite.com/$1 [L,R=301]
 </IfModule>
+```
 Redirecionamento de Domínio para Subdomínio
 O código abaixo redireciona o seu domínio para um subdomínio. Exemplo: meusite.com para subdominio.meusite.com.
 
 # Redireciona Domínio para um Subdomínio
+
+```htacess
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^meusite.com [NC]
 RewriteRule ^(.*)$ http://subdominio.meusite.com/$1 [L,R=301]
 </IfModule>
+```
+
 O código abaixo redireciona o seu Subdomínio para um Domínio. Exemplo: blog.meusite.com para meusite.com.
 
 Redirecionamento de Subdomínio para Domínio
 
 # Redireciona Subdomínio para um Domínio
+
+```htacess
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^subdominio.meusite.com [NC]
 RewriteRule ^(.*)$ http://meusite.com/$1 [L,R=301]
 </IfModule>
+```
+
 Redirecionar domínio para outro
 O comando abaixo faz o redirecionamento de um domínio para outro. Este é o código que você deve usar quando quer passar a autoridade do domínio antigo para o novo.
 
 # Redireciona domínio antigo para novo domínio
+
+```htacess
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond %{HTTP_HOST} ^meuantigosite.com [NC]
 RewriteRule ^(.*)$ http://meunovosite.com/$1 [L,R=301]
 </IfModule>
+```
+
 Observações sobre os redirecionamentos
 Você teve acesso a diversos códigos para fazer o redirecionamento via htaccess, mas antes de sair por ai copiando e colando os códigos, peço que siga essas dicas e observações:
 
