@@ -20,11 +20,13 @@ Redirecionamento de http para https
 O comando abaixo irá redirecionar todo o acesso do endereço http://meusite.com/ para https://meusite.com
 
 # Redireciona de http para https
+```htacess
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https
 RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
 </IfModule>
+```
 Obs.: É necessário ter um certificado SSL válido e instalado no domínio para que o redirecionamento funcione corretamente. Recomendo desativar plugins de redirecionamento de SSL no WordPress. Pode causar loops e tirar o site do ar.
 
 Redirecionamento de URL com ou sem o WWW
